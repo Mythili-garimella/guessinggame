@@ -1,10 +1,11 @@
+#!/usr/bin/env bash
+# File:  guessinggame.sh
 
-#!usr/bin/env b ash
-#File guessinggame.sh
-
-sum=$(ls -l |wc -l)
+sum=$(ls -l |grep "^-" | wc -l)
 
 function guess  {
+	if [[ $1 =~ ^[0-9]+$ ]]
+	then 
 	if [[ $1 -gt $2 ]]
 	then
 		echo "Guess was too High!"
@@ -14,7 +15,11 @@ function guess  {
 	else
 		echo ""
 		echo "Congrats!You guessed right"
+		
 	fi
+else 
+	echo "Entered value is not a number"
+fi
 
 }
 
@@ -25,4 +30,5 @@ do
 	echo ""
 
 done
+
 
